@@ -36,6 +36,12 @@ let foods = [
 */
 
 //CODE HERE
+foods.forEach((element) =>{
+  let carbCals =element.carbs * 4
+  let proteinCals =element.protein * 4
+  let fatCals =element.fat * 9
+  return element ['calories']= carbCals + proteinCals + fatCals
+})
 
 //////////////////////////////////PROBLEMS 2-4//////////////////////////////////
 /*
@@ -82,6 +88,10 @@ const products = [
 
 //CODE HERE
 
+let saleProducts= products.map ((element)=> {
+  element.price *= 0.75
+  return element
+})
 ////////////////////PROBLEM 3////////////////////
 /*
   A customer has placed an order - they want one of every product that has blue on it. 
@@ -91,7 +101,11 @@ const products = [
 */
 
 //CODE HERE
-
+let blueProducts = saleProducts.filter ((element) => {
+  if (element.color.includes('blue')) {
+    return element
+  }
+})
 ////////////////////PROBLEM 4////////////////////
 /*
   Now you'd like to get them their order total. 
@@ -100,7 +114,9 @@ const products = [
 */
 
 //CODE HERE
-
+let orderTotal = blueProduct.reduce((acc, curr) => {
+  return acc + curr.price
+}, 0)
 //////////////////////////////////PROBLEMS 5-8//////////////////////////////////
 /*
   For these problems we will be using the objects below, contactInfo and shippingInfo,
@@ -130,7 +146,7 @@ const shippingInfo = {
 */
 
 //CODE HERE
-
+ let helensInfo = Object.assign(contactInfo, shippingInfo)
 ////////////////////PROBLEM 6////////////////////
 /*
   Helen has a daughter named Ellen that lives at the same address.
@@ -139,14 +155,16 @@ const shippingInfo = {
 */
 
 //CODE HERE
-
+let ellensInfo = {...helensInfo}
+ellensInfo.name = 'Ellen'
+ellensInfo.email ='ellen@email.com'
 ////////////////////PROBLEM 7////////////////////
 /* 
   Save Ellen's email to a new variable using destructuring.
 */
 
 //CODE HERE
-
+let {email}= ellensInfo
 ////////////////////PROBLEM 8////////////////////
 /*
   In a single expression (one line), save the zip code and state 
@@ -154,7 +172,7 @@ const shippingInfo = {
 */
 
 //CODE HERE
-
+let {zipCode, state} = ellensInfo
 //////////////////////////////////PROBLEMS 9-11//////////////////////////////////
 /*
   Use the userInfo object below to complete problems 9-11.

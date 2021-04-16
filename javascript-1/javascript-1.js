@@ -10,6 +10,7 @@
 
 //CODE HERE
 
+ const myArr = [4, 'abc', ['cat', 'dog', 'bird'], 77 ]
 
 ////////////////////PROBLEM 2////////////////////
 /*
@@ -18,10 +19,11 @@
     called 'foundZ'.
 */
 
-const nestedLetters = ['m', 'g', 'e', 'q', 'h', ['n', 'b', ['v', 'z', 'y', 'r']], 'a']
+let nestedLetters = ['m', 'g', 'e', 'q', 'h', ['n', 'b', ['v', 'z', 'y', 'r']], 'a']
 
 //CODE HERE
 
+const foundZ = nestedLetters[5][2][1]
 
 ////////////////////PROBLEM 3////////////////////
 /*
@@ -38,6 +40,7 @@ const desert = ['rattlesnake', 'coyote']
 
 //CODE HERE
 
+const animals = [...forest,...ocean,...savannah,...desert]
 
 /*
     Now use the spread operator to make a copy of your animals array.
@@ -45,7 +48,7 @@ const desert = ['rattlesnake', 'coyote']
 */
 
 //CODE HERE
-
+ const animalsCopy = [...animals, 'elephant']
 
 ////////////////////PROBLEM 4////////////////////
 /*
@@ -57,6 +60,13 @@ const desert = ['rattlesnake', 'coyote']
 
 //CODE HERE
 
+let compareNums = (num1, num2) => {
+    if (num1 > num2){
+        return num1;
+    }else {
+        return num2;
+    }
+}
   
 ////////////////////PROBLEM 5////////////////////
 /*
@@ -69,6 +79,9 @@ const desert = ['rattlesnake', 'coyote']
 
 //CODE HERE
   
+const bestMovie = (movie) => {
+    ` ${movie} is the best movie ever!`
+}
   
 ////////////////////PROBLEM 6////////////////////
 /*
@@ -77,6 +90,9 @@ const desert = ['rattlesnake', 'coyote']
 
 //CODE HERE
   
+const jsNinja = () => {
+    return 'I am a JavaScript ninja!'
+}
 
 ////////////////////PROBLEM 7////////////////////
 
@@ -98,6 +114,7 @@ const desert = ['rattlesnake', 'coyote']
 
 //CODE HERE
   
+delete gameInfo.rating
 
 ////////////////////PROBLEM 8////////////////////
 
@@ -119,7 +136,11 @@ const desert = ['rattlesnake', 'coyote']
 */
 
 //CODE HERE
-  
+   for (let key in shapes){
+       if (shapes[key] %2 !==0){
+           delete shapes[key];
+       }
+   }
   
 ////////////////////PROBLEM 9////////////////////
 
@@ -162,10 +183,17 @@ const classes = [
 
 //CODE HERE
 
+for (let i=0; i <classes.length; i++){
+    for (let key in classes[i]){
+        if (classes[i][key] === true) {
+            classes[i][key] = false;
+        }
+    }
+}
   
 ////////////////////PROBLEM 10////////////////////
 /*
-    Use nested for loops to compare the letters in the lettersToPair array below.
+    Use nested for loops to compare the letters in the nestedLetters array below.
     When you find a pair, push the indexes of the letters into the pairsArray as an array.
     For example, looping the array ['b', 'x', 'x', 'b'] 
     should create the array [[0,3], [1,2]].
@@ -178,7 +206,13 @@ let pairsArray = []
 
 //CODE HERE
 
-    
+  for( let i=0; i<lettersToPair.length; i++){
+      for (let j= i+1; j <lettersToPair.length; j++){
+          if (lettersToPair[i] === lettersToPair[j]){
+              pairsArray.push ([i , j])
+          }
+      }
+  }
 
 //////////////////////////////////PROBLEMS 11-14//////////////////////////////////
 /*
@@ -195,7 +229,12 @@ let pairsArray = []
 
 //CODE HERE
 
-
+function Dog (name, age, breed, tricks){
+    this.name= name;
+    this.age= age;
+    this.breed = breed;
+    this.tricks = tricks;
+}
 /*
     Invoke your dog constructor passing in 'Fido' for the name, 3 for the age, 
     'Jack Russell' for the breed, and an array containing the strings 'sit' and 'shake'.
@@ -204,6 +243,7 @@ let pairsArray = []
 
 //CODE HERE
   
+let Fido= new Dog ('Fido', 3, 'Jack Russell', ['sit', 'shake'])
 
 ////////////////////PROBLEM 12////////////////////
 /*
@@ -214,7 +254,9 @@ let pairsArray = []
 
 //CODE HERE
 
-
+function bark (){
+    return `${this.name} says bark!`
+}
 /*
     Invoke the call method on bark, passing in fido as the context
     and saving the result to a variable called fidoSpeak.
@@ -222,7 +264,7 @@ let pairsArray = []
 
 //CODE HERE
   
-  
+  const fidoSpeak = bark.call(fido)
 ////////////////////PROBLEM 13////////////////////
 /*
     Write a function called 'teachTrick' that will take in one parameter, trick, 
@@ -233,7 +275,10 @@ let pairsArray = []
 
 //CODE HERE
 
-
+function teachTrick (trick){
+    this.trick.push(trick);
+    return this.trick;
+}
 /*
     Invoke the bind method on teachTrick, passing in fido as the context and the string 'stay' as a trick.
     Save the result to a variable called 'teachStay'.
@@ -241,6 +286,7 @@ let pairsArray = []
 
 //CODE HERE
   
+const teachStay = teachTrick.bind(fido, 'stay')
   
 ////////////////////PROBLEM 14////////////////////
 /*
@@ -251,7 +297,9 @@ let pairsArray = []
 */
 
 //CODE HERE
-
+function dogIntro (treat, toy){
+    return `${this.name} is a ${this.breed} that loves ${this.treat} and their ${this.toy}!`
+}
 
 /*
     Invoke the apply method on dogIntro, passing in fido as the context 
@@ -260,8 +308,7 @@ let pairsArray = []
 */
 
 //CODE HERE
-  
-
+  const fidoIntro= dogIntro.apply (fido,['chicken', 'tennis ball'])
 ////////////////////PROBLEM 15////////////////////
 /*
     Write a constructor function called Phone.
@@ -270,8 +317,13 @@ let pairsArray = []
 */
 
 //CODE HERE
-
-  
+ function phone (brand, model, storage, color, sold){
+    this.brand = brand; 
+   this.model = model;
+    this.storage = storage; 
+   this.color = color;
+    this.sold = sold;
+ }
 /*
     Next make three new phones using your constructor function.
     Save them to the variables below (make sure you uncomment them).
@@ -284,11 +336,10 @@ let pairsArray = []
 */
 
 //CODE HERE
-  // let phone1 = 
+  let phone1 = new phone ('Android', 'model 8', 20, 'black', false)  
+  let phone2 = new phone ('Android', 'model 9', 30, 'blue', false)  
   
-  // let phone2 = 
-  
-  // let phone3 = 
+ let phone3 = new phone ('Android', 'model 10', 40, 'purple', false)  
   
 /*
     Last, add a prototype method to Phone.
@@ -299,5 +350,9 @@ let pairsArray = []
 */
 
 //CODE HERE
-
+phone.prototype.sell = function (){
+    this.sold = true;
+    return `${this.brand} $
+    {this.model} has been sold.`
+}
   
