@@ -234,7 +234,7 @@ const userInfo = {
 */
 
 //CODE HERE
-
+let shouldAlert = userInfo.settings.alerts
 ////////////////////PROBLEM 10////////////////////
 /*
   Set the value of topic below to the last item in gn@rly_c0der_007's topics array
@@ -242,7 +242,7 @@ const userInfo = {
 */
 
 //CODE HERE
-
+let topic = userInfo.topics.pop()
 ////////////////////PROBLEM 11////////////////////
 /*
   Set the value of commenterId below to the userId of the first response to 
@@ -250,7 +250,7 @@ const userInfo = {
 */
 
 //CODE HERE
-
+let commenterId = userInfo.comments[1]
 ////////////////////PROBLEM 12////////////////////
 /*
   Create an object called 'person' that has the following properties. 
@@ -269,7 +269,27 @@ const userInfo = {
 */
 
 //CODE HERE
-
+let person = {
+  name: 'Amadala',
+  age: 34,
+  jobs: ["Global Leader", "Senator", "Leader of Rebellion"],
+  birthday: function() {
+    this.age += 1
+  },
+  favorites: {
+    color: "blue",
+    number: 2,
+    book: "War of Worlds",
+  },
+  kids: [{
+    name: "Luke",
+    age: 7
+  },
+  {
+    name: "Leia",
+    age: 7
+  }]
+}
 //////////////////////////////////PROBLEMS 13-14//////////////////////////////////
 /*
   For the last two problems, you will be determining the 
@@ -294,7 +314,7 @@ const workout = {
 //let context1 = myFunc
 //let context1 = window
 //let context1 = global
-// let context1 = workout
+let context1 = workout
 
 ////////////////////PROBLEM 14////////////////////
 /*
@@ -306,7 +326,7 @@ function myFunc() {
   return this
 }
 
-//let context2 = myFunc
+let context2 = myFunc
 // let context2 = window
 //let context2 = global
 //let context2 = workout

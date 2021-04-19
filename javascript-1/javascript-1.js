@@ -23,7 +23,7 @@ let nestedLetters = ['m', 'g', 'e', 'q', 'h', ['n', 'b', ['v', 'z', 'y', 'r']], 
 
 //CODE HERE
 
-const foundZ = nestedLetters[5][2][1]
+let foundZ = nestedLetters[5][2][1]
 
 ////////////////////PROBLEM 3////////////////////
 /*
